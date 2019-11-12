@@ -1,0 +1,19 @@
+language: generic 
+sudo: required
+
+# Need a copy of Docker running
+services:
+  - docker 
+
+# Build our image using Dockerfile.dev
+before_install:
+  - docker build -t cinesia/docker-react -f Dockerfile.dev .
+
+# Run our test suite
+script:
+  # docker run <tag-image> <override-run-command>
+  # - docker run -e CI=true cinesi/docker-react npm tun test
+  - docker run cinesia/docker-react npm run test -- --coverage
+
+
+# Deploy to some hosting service
