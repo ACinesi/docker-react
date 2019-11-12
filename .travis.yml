@@ -17,5 +17,6 @@ script:
 # Deploy to some hosting service
 deploy:
   provider: azure_web_apps
+  verbose: true
 on:
   branch: master
