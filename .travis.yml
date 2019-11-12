@@ -16,7 +16,14 @@ script:
 
 # Deploy to some hosting service
 deploy:
-  provider: azure_web_apps
-  verbose: true
+  provider: elasticbeanstalk # preconfigured in travis
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-162578366392"
+  bucker_path: "docker-react"
 on:
   branch: master
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key:
+  secure: "$AWS_SECRET_KEY"
